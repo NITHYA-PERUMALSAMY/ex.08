@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Budget Calculator App</title>
+    <link rel="stylesheet" href="8e_1.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script>
+    var app = angular.module("myApp",[])
+    app.controller("mycontroller",function($scope){
+        $scope.fun = function(){
+            $scope.r = (($scope.amount*$scope.room)/100);
+            $scope.a = (($scope.amount*$scope.accessories)/100);
+            $scope.e = (($scope.amount*$scope.emergency)/100);
+            $scope.s = (($scope.amount*$scope.saving)/100);
+        }
+    });    
+    </script>
+</head>
+<body ng-app="myApp" ng-controller="mycontroller">
+    <div class="titlecard">
+        Budget Calculator App
+    </div>
+    <div align="center">
+        <h2>Enter Amount that you want to Manage</h2>
+        <input type="number" ng-model="amount" class="inputbox" id="amount" >
+    </div>
+
+    <div class="divide" align="center">
+        <h2>How would you like to divide your money?</h2>
+        <form>
+            <label><b>Room Rent (%)</b></label>
+            <input type="number" ng-model="room" class="inputbox">
+            <label><b>Accessories (%)</b></label>
+            <input type="number" ng-model="accessories" class="inputbox">
+            <label><b>Emergency (%)</b></label>
+            <input type="number" ng-model="emergency" class="inputbox">
+            <label><b>Saving (%)</b></label>
+            <input type="number" ng-model="saving" class="inputbox"><br>
+        </form>
+        <button class="buttonbox" id="calculate" ng-click="fun()">Evaluate My Money</button>
+    </div>
+    <div>
+        <form align="center">
+            <label id="roomrent">Room Rent: Rs.<span ng-bind="r"></span> </label>
+            <label id="accessories">Accessories: Rs.<span ng-bind="a"></span> </label>
+            <label id="emergency">Emergency: Rs.<span ng-bind="e"></span> </label>
+            <label id="saving">Saving: Rs. <span ng-bind="s"></span></label>
+        </form>
+    </div>
+</body>
+</html>
